@@ -1,0 +1,113 @@
+
+### project-tags ###
+
+variable "project_name" {
+    type = string
+}
+
+variable "environment" {
+    type = string
+    default = "dev"
+}
+
+variable "common_tags" {
+    type = map
+}
+
+### vpc-tags ###
+
+variable "vpc_cidr" {
+    type = string
+    default = "10.0.0.0/16"
+}
+
+variable "enable_dns_hostnames" {
+    type = bool
+    default = true
+}
+
+variable "vpc_tags" {
+    type = map
+    default = {}
+}
+
+### igw ###
+
+variable "igw_tags" {
+    type = map
+    default = {}
+}
+
+### public-subnets ###
+
+variable "public_subnet_cidrs" {
+    type = list
+    validation  {
+        condition = length(var.public_subnet_cidrs) == 2
+        error_message = "please provide 2 valid publicsubnet cidrs"
+    }
+
+}
+
+variable "public_subnet_cidr_tags" {
+    type = map
+    default = {}
+}
+
+### private-subnets ###
+
+variable "private_subnet_cidrs" {
+    type = list
+    validation {
+        condition  = length(var.private_subnet_cidrs) == 2
+        error_message = "please give two valid private subnet cidrs"
+    }
+}
+
+variable "private_subnet_cidr_tags" {
+    type = map
+    default = {}
+}
+
+##database_subnets
+
+variable "database_subnet_cidrs" {
+    type = list
+    validation {
+        condition = length(var.database_subnet_cidrs) == 2
+        error_message = "please give two valid subnet cidrs"
+    }
+}
+
+variable "database_subnet_cidr_tags" {
+    type = map
+    default = {}
+}
+
+##nat_gate_way
+
+variable "nat_gateway_tags" {
+    type = map
+    default = {}
+}
+
+###public-route-table
+
+variable "public_route_table_tags" {
+    type = map
+    default = {}
+}
+
+###private-route-table
+
+variable "private_route_table_tags" {
+    type = map
+    default = {}
+}
+
+###database-route-table
+
+variable "database_route_table_tags" {
+    type = map
+    default = {}
+}
