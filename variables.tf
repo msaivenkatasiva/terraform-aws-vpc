@@ -84,6 +84,17 @@ variable "database_subnet_cidr_tags" {
     default = {}
 }
 
+variable "database_subnet_group_tags" {
+    type = map
+    default = {}
+}
+
+###eip
+variable "eip_tags" {
+    type = map
+    default = {}
+}
+
 ##nat_gate_way
 
 variable "nat_gateway_tags" {
@@ -128,7 +139,5 @@ variable "vpc_peering_tags" {
     default = {}
 }
 
-variable "database_subnet_group_tags" {
-    type = map
-    default = {}
-}
+
+
